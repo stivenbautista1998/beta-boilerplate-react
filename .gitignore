@@ -1,0 +1,5 @@
+# archivos generados
+/dist/
+
+# modulos de node
+/node_modules/
