@@ -1,5 +1,5 @@
 {
-  "name": "learn-webpack_1",
+  "name": "boilerplate-react",
   "version": "1.0.0",
   "description": "Boilerplate de react con sass y webpack",
   "main": "index.js",
