@@ -44,7 +44,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
+                test: /\.(eot|ico|svg|otf|ttf|woff|woff2)$/,
                 use: 'file-loader',
             },
             {
@@ -80,6 +80,13 @@ module.exports = {
                     loader: 'html-loader',
                     options: {minimize: true}
                 }
+            },
+            {
+                test: /\.(mp4|webm)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {limit: 10000}
+                }
             }
         ]
     },
@@ -97,6 +104,7 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         })
     ],
+    devtool: devMode ? 'eval-source-map' : 'source-map',
     devServer: {
         contentBase: DIST_DIR,
         hot: true,
