@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const devMode = process.env.NODE_ENV !== 'production';
 const SRC_DIR = __dirname + '/src';
+const PUBLIC_DIR = __dirname + '/public';
 const DIST_DIR = __dirname + '/dist';
 
 module.exports = {
@@ -43,11 +44,48 @@ module.exports = {
                 ]
             },
             {
+                test: /\.(eot|ico|svg|otf|ttf|woff|woff2)$/,
+                use: 'file-loader',
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: [
+                  'file-loader',
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {
+                      query: {
+                        gifsicle: {
+                          interlaced: true
+                        },
+                        mozjpeg: {
+                          progressive: true
+                        },
+                        optipng: {
+                          optimizationLevel: 7
+                        },
+                        pngquant: {
+                          quality: '65-90',
+                          speed: 4
+                        }
+                      }
+                    },
+                  },
+                ],
+            },
+            {
                 test: /\.(html)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'html-loader',
                     options: {minimize: true}
+                }
+            },
+            {
+                test: /\.(mp4|webm)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {limit: 10000}
                 }
             }
         ]
@@ -58,7 +96,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: SRC_DIR + '/index.html',
+            template: PUBLIC_DIR + '/index.html',
             filename: './index.html',
         }),
         new MiniCssExtractPlugin({
