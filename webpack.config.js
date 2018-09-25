@@ -104,7 +104,6 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         })
     ],
-    devtool: devMode ? 'eval-source-map' : 'source-map',
     devServer: {
         contentBase: DIST_DIR,
         hot: true,

@@ -1,10 +1,11 @@
 {
-  "name": "learn-webpack_1",
+  "name": "boilerplate-react",
   "version": "0.1.0",
   "private": true,
   "description": "Boilerplate de react con sass y webpack",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf ./dist",
     "build": "./node_modules/.bin/webpack -p --mode production",
     "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -42,6 +43,7 @@
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
     "pngquant-bin": "^5.0.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
