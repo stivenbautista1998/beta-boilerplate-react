@@ -3,12 +3,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const devMode = process.env.NODE_ENV !== 'production';
+const prodMode = process.env.NODE_ENV !== 'production';
 const SRC_DIR = __dirname + '/src';
 const PUBLIC_DIR = __dirname + '/public';
 const DIST_DIR = __dirname + '/dist';
 
-module.exports = {
+const config = {
     entry: [
         SRC_DIR + '/index.jsx'
     ],
@@ -100,8 +100,8 @@ module.exports = {
             filename: './index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            filename: prodMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: prodMode ? '[id].css' : '[id].[hash].css',
         })
     ],
     devServer: {
@@ -109,4 +109,15 @@ module.exports = {
         hot: true,
         port: 9000
     }
+};
+
+module.exports = function() {
+    if(prodMode) {
+        console.log('Mode of PRODUCTION');
+        config.devtool = 'source-map';
+    } else {
+        console.log('Mode of DEVELOPMENT');
+        config.devtool = 'eval-source-map';
+    }
+    return config;
 };

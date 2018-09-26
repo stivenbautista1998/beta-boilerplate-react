@@ -5,7 +5,8 @@
   "description": "Boilerplate de react con sass y webpack",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean:dist": "rimraf dist",
+    "clean:node": "rimraf node_modules",
     "build": "./node_modules/.bin/webpack -p --mode production",
     "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development -w",
     "test": "echo \"Error: no test specified\" && exit 1"
