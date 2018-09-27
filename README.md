@@ -1,5 +1,7 @@
 # Boilerplate of React
-By Stiven David Bautista Sanjuanelo
+![Type license](https://img.shields.io/crates/l/rustc-serialize.svg)
+
+By Stiven Bautista
 
 ## Using the following technology
 * REACT
