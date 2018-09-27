@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const prodMode = process.env.env == 'prod';
 const SRC_DIR = __dirname + '/src';
 const PUBLIC_DIR = __dirname + '/public';
 const DIST_DIR = __dirname + '/dist';
