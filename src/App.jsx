@@ -6,7 +6,7 @@ import '!file-loader?name=[name].[ext]!../public/favicon.ico';
 import Button from "./button/button";
 import FancyButton from "./fancy-button/fancy-button";
 // import video from '../public/media/peli.mp4';
-import img from '../public/media/sao.jpg';
+import img from '../public/media/img/sao.jpg';
 
 export default class App extends Component {
     render() {

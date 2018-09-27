@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const prodMode = process.env.NODE_ENV !== 'production';
+const prodMode = process.env.env == 'prod';
 const SRC_DIR = __dirname + '/src';
 const PUBLIC_DIR = __dirname + '/public';
 const DIST_DIR = __dirname + '/dist';
@@ -98,10 +98,6 @@ const config = {
         new HtmlWebpackPlugin({
             template: PUBLIC_DIR + '/index.html',
             filename: './index.html',
-        }),
-        new MiniCssExtractPlugin({
-            filename: prodMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: prodMode ? '[id].css' : '[id].[hash].css',
         })
     ],
     devServer: {
@@ -111,12 +107,24 @@ const config = {
     }
 };
 
-module.exports = function() {
-    if(prodMode) {
-        console.log('Mode of PRODUCTION');
+module.exports = function( env ) {
+    var production = 'prod' === env;
+
+    if(production) {
+        console.log('💰💻 Mode of PRODUCTION 🚀🏆');
+
+        config.plugins[2] = new MiniCssExtractPlugin({
+            filename: '[name].[hash].css',
+            chunkFilename: '[id].[hash].css',
+        });
         config.devtool = 'source-map';
     } else {
-        console.log('Mode of DEVELOPMENT');
+        console.log('🛠🎉 Mode of DEVELOPMENT 🎮🙌');
+        
+        config.plugins[2] = new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename:'[id].css',
+        });
         config.devtool = 'eval-source-map';
     }
     return config;
