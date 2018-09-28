@@ -46,7 +46,7 @@ const config = {
                 test: /\.(png|svg|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name: 'img/[name].[hash:7].[ext]'
+                    name: 'media/img/[name].[hash:7].[ext]'
                 }
             },
             {
@@ -61,7 +61,10 @@ const config = {
                 test: /\.(mp4|webm)$/,
                 use: {
                     loader: 'url-loader',
-                    options: {limit: 10000}
+                    options: {
+                        limit: 10000,
+                        name: 'media/video/[name].[hash:7].[ext]'
+                    }
                 }
             }
         ]
