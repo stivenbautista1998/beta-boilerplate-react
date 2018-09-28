@@ -14,7 +14,7 @@ const config = {
     output: {
         path: DIST_DIR,
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: 'js/bundle.js'
     },
     module: {
         rules: [
@@ -43,34 +43,11 @@ const config = {
                 ]
             },
             {
-                test: /\.(eot|ico|svg|otf|ttf|woff|woff2)$/,
-                use: 'file-loader',
-            },
-            {
-                test: /\.(jpg|png|gif)$/,
-                use: [
-                  'file-loader',
-                  {
-                    loader: 'image-webpack-loader',
-                    options: {
-                      query: {
-                        gifsicle: {
-                          interlaced: true
-                        },
-                        mozjpeg: {
-                          progressive: true
-                        },
-                        optipng: {
-                          optimizationLevel: 7
-                        },
-                        pngquant: {
-                          quality: '65-90',
-                          speed: 4
-                        }
-                      }
-                    },
-                  },
-                ],
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'img/[name].[hash:7].[ext]'
+                }
             },
             {
                 test: /\.(html)$/,
@@ -113,16 +90,16 @@ module.exports = function( env ) {
         console.log('💰💻 Mode of PRODUCTION 🚀🏆');
 
         config.plugins[2] = new MiniCssExtractPlugin({
-            filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].css',
+            filename: 'css/[name].[hash:7].css',
+            chunkFilename: 'css/[id].[hash:7].css',
         });
         config.devtool = 'source-map';
     } else {
         console.log('🛠🎉 Mode of DEVELOPMENT 🎮🙌');
         
         config.plugins[2] = new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename:'[id].css',
+            filename: 'css/[name].css',
+            chunkFilename:'css/[id].css',
         });
         config.devtool = 'eval-source-map';
     }
