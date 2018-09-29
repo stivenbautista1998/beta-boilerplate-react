@@ -15,7 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/stivenbautista1998/boilerplate-react.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Node",
+    "React",
+    "Sass",
+    "Webpack",
+    "Boilerplate"
+  ],
   "author": {
     "name": "Stiven Bautista",
     "url": "https://stivenbautista.com"
