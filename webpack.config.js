@@ -66,6 +66,11 @@ const config = {
                         name: 'media/video/[name].[hash:7].[ext]'
                     }
                 }
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader',
+                type: 'javascript/auto'
             }
         ]
     },
