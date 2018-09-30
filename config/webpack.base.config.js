@@ -1,16 +1,12 @@
 // const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const SRC_DIR = __dirname + '/src';
-const PUBLIC_DIR = __dirname + '/public';
-const DIST_DIR = __dirname + '/dist';
+const DIST_DIR = __dirname + '/../dist';
 
-const config = {
-    entry: [
-        SRC_DIR + '/index.jsx'
-    ],
+module.exports = (options) => ({
+    mode: options.mode,
+    entry: options.entry,
     output: {
         path: DIST_DIR,
         publicPath: '/',
@@ -77,39 +73,17 @@ const config = {
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-            template: PUBLIC_DIR + '/index.html',
-            filename: './index.html',
+    plugins: options.plugins.concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+              NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+            },
         })
-    ],
-    devServer: {
-        contentBase: DIST_DIR,
-        hot: true,
-        port: 9000
-    }
-};
+    ]),
+    devtool: options.devtool
+});
 
-module.exports = function( env ) {
-    var production = 'prod' === env;
-
-    if(production) {
-        console.log('💰💻 Mode of PRODUCTION 🚀🏆');
-
-        config.plugins[2] = new MiniCssExtractPlugin({
-            filename: 'css/[name].[hash:7].css',
-            chunkFilename: 'css/[id].[hash:7].css',
-        });
-        config.devtool = 'source-map';
-    } else {
-        console.log('🛠🎉 Mode of DEVELOPMENT 🎮🙌');
-        
-        config.plugins[2] = new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
-            chunkFilename:'css/[id].css',
-        });
-        config.devtool = 'eval-source-map';
-    }
-    return config;
+const config = function() {
+    console.log('💰💻 Mode of PRODUCTION 🚀🏆');
+    console.log('🛠🎉 Mode of DEVELOPMENT 🎮🙌');
 };
