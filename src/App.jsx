@@ -24,7 +24,7 @@ function ListClient(props) {
 //     }).catch((err) => {
 //         console.log('no pudo: ' + err);
 //     });
-//   }
+// }
 
 export default class App extends Component {
     render() {

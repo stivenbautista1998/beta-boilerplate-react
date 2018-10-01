@@ -1,3 +1,7 @@
+/**
+ * DEVELOPMENT WEBPACK CONFIGURATION
+ */
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -5,6 +9,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = require('./webpack.base.config')({
     mode: 'development',
+    // Add hot reloading in development
     entry: [
         'webpack-hot-middleware/client?noInfo=true&reload=true',
         path.join(process.cwd(), 'src/index.jsx')
