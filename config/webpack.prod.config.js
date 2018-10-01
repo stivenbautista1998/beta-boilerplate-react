@@ -1,17 +1,15 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const PUBLIC_DIR = __dirname + '/../public';
-const SRC_DIR = __dirname + '/../src';
 
 module.exports = require('./webpack.base.config')({
     mode: 'production',
     entry: [
-        SRC_DIR + '/index.jsx'
+       path.join(process.cwd(), 'src/index.jsx')
     ],
     plugins: [
         new HtmlWebpackPlugin({
-            template: PUBLIC_DIR + '/index.html',
+            template: 'public/index.html',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

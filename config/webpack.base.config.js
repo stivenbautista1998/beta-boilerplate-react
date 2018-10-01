@@ -1,14 +1,12 @@
-// const path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const DIST_DIR = __dirname + '/../dist';
 
 module.exports = (options) => ({
     mode: options.mode,
     entry: options.entry,
     output: {
-        path: DIST_DIR,
+        path: path.resolve(process.cwd(), 'dist'),
         publicPath: '/',
         filename: 'js/bundle.js'
     },
