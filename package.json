@@ -7,8 +7,8 @@
   "scripts": {
     "clean:dist": "rimraf dist",
     "clean:node": "rimraf node_modules",
-    "build": "./node_modules/.bin/webpack -p --env=prod",
-    "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development -w",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack.prod.config.js --color -p --progress",
+    "start": "NODE_ENV=development node server",
     "test": "jest"
   },
   "repository": {
@@ -56,9 +56,11 @@
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.2"
   },
   "dependencies": {
+    "express": "^4.16.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   }
