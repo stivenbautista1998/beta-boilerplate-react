@@ -20,5 +20,8 @@ module.exports = require('./webpack.base.config')({
             chunkFilename:'css/[id].css',
         })
     ],
-    devtool: 'eval-source-map'
+    devtool: 'eval-source-map',
+    performance: {
+        hints: false
+    }
 });

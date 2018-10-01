@@ -86,7 +86,9 @@ module.exports = (options) => ({
             },
         })
     ]),
-    devtool: options.devtool
+    devtool: options.devtool,
+    target: 'web', // Make web variables accessible to webpack, e.g. window
+    performance: options.performance || {}
 });
 
 const config = function() {
