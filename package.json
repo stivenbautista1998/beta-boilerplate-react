@@ -7,9 +7,9 @@
   "scripts": {
     "clean:dist": "rimraf dist",
     "clean:node": "rimraf node_modules",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack.prod.config.js --color -p --progress",
-    "start": "NODE_ENV=development node server",
-    "test": "jest"
+    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack.prod.config.js --color -p --progress",
+    "start": "cross-env NODE_ENV=development node server",
+    "test": "cross-env NODE_ENV=test jest"
   },
   "repository": {
     "type": "git",
@@ -64,6 +64,7 @@
     "babel-polyfill": "^6.26.0",
     "chalk": "^2.4.1",
     "compression": "^1.7.3",
+    "cross-env": "^5.2.0",
     "express": "^4.16.3",
     "ip": "^1.1.5",
     "minimist": "^1.2.0",
