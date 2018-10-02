@@ -9,11 +9,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = require('./webpack.base.config')({
     mode: 'production',
     entry: [
-       path.join(process.cwd(), 'src/index.jsx')
+       path.join(process.cwd(), 'app/src/index.jsx')
     ],
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'public/index.html',
+            template: 'app/public/index.html',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
