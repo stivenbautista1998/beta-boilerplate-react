@@ -1,3 +1,7 @@
+/**
+ * PRODUCTION WEBPACK CONFIGURATION
+ */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -28,5 +32,8 @@ module.exports = require('./webpack.base.config')({
             chunkFilename: 'css/[id].[hash:7].css',
         })
     ],
-    devtool: 'source-map'
+    devtool: 'source-map',
+    performance: {
+        assetFilter: (assetFilename) => !(/(\.map$)|(^(bundle\.|favicon\.))/.test(assetFilename))
+    }
 });
