@@ -18,17 +18,17 @@ function ListClient(props) {
     )
 }
 
-// function load() {
-//     fetch('./persona.json').then((data) => {
-//         console.log(data);
-//     }).catch((err) => {
-//         console.log('no pudo: ' + err);
-//     });
-// }
+function load() {
+    fetch('./persona.json').then((data) => {
+        console.log(data);
+    }).catch((err) => {
+        console.log('no pudo: ' + err);
+    });
+}
 
 export default class App extends Component {
     render() {
-        // load();
+        load();
         return (
             <Fragment>
                 <Button label="Boton Normal =)" />

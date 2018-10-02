@@ -93,5 +93,4 @@ module.exports = (options) => ({
 
 const config = function() {
     console.log('💰💻 Mode of PRODUCTION 🚀🏆');
-    console.log('🛠🎉 Mode of DEVELOPMENT 🎮🙌');
 };
