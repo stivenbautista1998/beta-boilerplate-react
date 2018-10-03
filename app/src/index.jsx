@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 // Import root app
-import App from './App';
+import App from './containers/App';
 
 ReactDom.render(
     <App />,

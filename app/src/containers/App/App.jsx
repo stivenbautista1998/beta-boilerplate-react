@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import styles from './styles/main.scss';
-import '!file-loader?name=[name].[ext]!../public/favicon.ico';
-import Button from "./components/button/button";
-import FancyButton from "./components/fancy-button/fancy-button";
-import img from '../public/media/img/sao.jpg';
-import { personas } from './persona.json';
-// import video from '../public/media/video/peli.mp4';
+import styles from '../../styles/main.scss';
+import '!file-loader?name=[name].[ext]!../../../public/favicon.ico';
+import Button from "../../components/button/button";
+import FancyButton from "../../components/fancy-button/fancy-button";
+import img from '../../../public/media/img/sao.jpg';
+import { personas } from '../../persona.json';
+// import video from '../../../public/media/video/peli.mp4';
 
 function ListClient(props) {
     var result = props.persona.map(item => {
@@ -19,7 +19,7 @@ function ListClient(props) {
 }
 
 function load() {
-    fetch('./persona.json').then((data) => {
+    fetch('../../persona.json').then((data) => {
         console.log(data);
     }).catch((err) => {
         console.log('no pudo: ' + err);
