@@ -3,7 +3,7 @@
 
 By Stiven Bautista
 
-## Using the following technology
+## Using the following stack
 * REACT
 * SASS
 * BABEL

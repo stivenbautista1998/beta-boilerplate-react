@@ -2,6 +2,8 @@
 import 'babel-polyfill';
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+
+// Import root app
 import App from './App';
 
 ReactDom.render(

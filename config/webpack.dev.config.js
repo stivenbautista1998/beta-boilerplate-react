@@ -12,12 +12,12 @@ module.exports = require('./webpack.base.config')({
     // Add hot reloading in development
     entry: [
         'webpack-hot-middleware/client?noInfo=true&reload=true',
-        path.join(process.cwd(), 'src/index.jsx')
+        path.join(process.cwd(), 'app/src/index.jsx')
     ],
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: 'public/index.html',
+            template: 'app/public/index.html',
             filename: './index.html',
         }),
         new MiniCssExtractPlugin({
