@@ -21,6 +21,14 @@ function ListClient(props) {
 function load() {
     fetch('../../persona.json').then((data) => {
         console.log(data);
+        console.log("pass: " + process.env.DB_PASS);
+        console.log("host: " + process.env.DB_HOST);
+        console.log("api key: " + process.env.API_KEY);
+        console.log("user: " + process.env.DB_USER);
+        console.log("secret: " + process.env.SECRET_CODE);
+        console.log("feature: " + process.env.SPECIAL_FEATURE);
+        console.log("enviroment: " + process.env.NODE_ENV);
+
     }).catch((err) => {
         console.log('no pudo: ' + err);
     });

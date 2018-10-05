@@ -1,6 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const dotenv = require('dotenv');
+
+const envKeys = function() {
+  // call dotenv and it will return an Object with a parsed key
+  const env = dotenv.config().parsed;
+  const envResults = Object.keys(env).reduce(function(prev, next){
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+  }, {});
+  return envResults;
+}
 
 module.exports = (options) => ({
     mode: options.mode,
@@ -80,11 +91,9 @@ module.exports = (options) => ({
         // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
         // inside your code for any environment checks; UglifyJS will automatically
         // drop any unreachable code.
-        new webpack.DefinePlugin({
-            'process.env': {
-              NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-            },
-        })
+
+        // plugin to define global constants
+        new webpack.DefinePlugin(envKeys())
     ]),
     devtool: options.devtool,
     target: 'web', // Make web variables accessible to webpack, e.g. window
