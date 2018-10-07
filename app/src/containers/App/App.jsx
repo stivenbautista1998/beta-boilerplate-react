@@ -8,45 +8,55 @@ import { personas } from '../../persona.json';
 // import video from '../../../public/media/video/peli.mp4';
 
 function ListClient(props) {
-    var result = props.persona.map(item => {
-       return <li key={item.id}>{item.firtName} - {item.lastName}</li>
-    });
-    return (
-        <ul>
-            {result}
-        </ul>
-    )
-}
+  var result = props.persona.map(item => {
+    return <li key={item.id}>{item.firtName} - {item.lastName}</li>
+  });
 
-function load() {
-    fetch('../../persona.json').then((data) => {
-        console.log(data);
-        console.log("pass: " + process.env.DB_PASS);
-        console.log("host: " + process.env.DB_HOST);
-        console.log("api key: " + process.env.API_KEY);
-        console.log("user: " + process.env.DB_USER);
-        console.log("secret: " + process.env.SECRET_CODE);
-        console.log("feature: " + process.env.SPECIAL_FEATURE);
-        console.log("enviroment: " + process.env.NODE_ENV);
-
-    }).catch((err) => {
-        console.log('no pudo: ' + err);
-    });
+  return (
+    <ul>
+      {result}
+    </ul>
+  )
 }
 
 export default class App extends Component {
-    render() {
-        load();
-        return (
-            <Fragment>
-                <Button label="Boton Normal =)" />
-                <FancyButton label="Fancy Button =)" />
-                <img src={img} alt="image sao"/>
-                <ListClient persona={personas} />
-                {/* <video autoPlay controls>
-                    <source src={video} type='video/mp4' />
-                </video> */}
-            </Fragment>
-        )
-    }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      urlImg: '',
+      isLoading: false,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+
+    fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+    .then((response) => response.blob())
+    .then((response) => {
+      const objectURL = URL.createObjectURL(response);
+      console.log(objectURL);
+      this.setState({ urlImg: objectURL, isLoading: false });
+    }).catch((err) => {
+      console.log('no pudo: ' + err);
+    });
+  }
+
+  render() {
+    console.log("pass: " + process.env.DB_PASS);
+    return (
+      <Fragment>
+        <Button label="Boton Normal =)" />
+        <FancyButton label="Fancy Button =)" />
+        <img src={img} alt="image sao"/>
+        <ListClient persona={personas} />
+        {/* <video autoPlay controls>
+          <source src={video} type='video/mp4' />
+        </video> */}
+        <img src={this.state.urlImg} alt="my Image button"/>
+      </Fragment>
+    )
+  }
+
 }
