@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import '../../styles/main.scss';
 import '!file-loader?name=[name].[ext]!../../../public/favicon.ico';
 import Button from '../../components/button/button';
@@ -8,6 +9,9 @@ import { personas } from '../../persona.json';
 // import video from '../../../public/media/video/peli.mp4';
 
 function ListClient(props) {
+  ListClient.propTypes = {
+    persona: PropTypes.array
+  };
   const { persona } = props;
   if (!persona) {
     return null;
