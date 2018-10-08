@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import styles from './button.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './button.scss';
 
-class Button extends Component {
-  render() {
-    return (
-      <button className={styles.button}>{this.props.label}</button>
-    );
+const Button = (props) => {
+  Button.propTypes = {
+    label: PropTypes.string
+  };
+  const { label } = props;
+  if (!label) {
+    return null;
   }
-}
+  return <button type="button" className={styles.button}>{label}</button>;
+};
 
 export default Button;

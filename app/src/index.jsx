@@ -1,6 +1,6 @@
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 
 // Import root app
