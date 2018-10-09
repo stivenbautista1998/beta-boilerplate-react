@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/main.scss';
+
+// Load the favicon
+/* eslint-disable import/no-webpack-loader-syntax */
 import '!file-loader?name=[name].[ext]!../../../public/favicon.ico';
+/* eslint-enable import/no-webpack-loader-syntax */
+
 import Button from '../../components/button/button';
 import FancyButton from '../../components/fancy-button/fancy-button';
 import img from '../../../public/media/img/sao.jpg';
