@@ -1,0 +1,77 @@
+@import '../../styles/partials/variables';
+
+.list {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  background: #20232a;
+
+  @media #{$large} {
+    padding-top: 6px;
+  }
+
+  &__item {
+    border-bottom: 1px solid white;
+    list-style-type: none;
+    display: block;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @media #{$large} {
+      display: inline-block;
+      border-bottom: none;
+    }
+  }
+
+  &__link {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFF;
+    padding: .5em 2em;
+    display: inline-block;
+    text-decoration: none;
+
+    &--selected {
+      color: #59ccee;
+    }
+
+    @media #{$large} {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.header {
+  color: yellow;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.icon-logo {
+  animation: App-logo-rotate infinite 20s linear;
+  height: 90px;
+  @media #{$large} {
+    height: 70px;
+  }
+}
+
+.section-nav {
+  background: #07365e;
+  display: block;
+  text-align: center;
+
+  @media #{$large} {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@keyframes App-logo-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

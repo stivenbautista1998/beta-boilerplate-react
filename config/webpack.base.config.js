@@ -38,10 +38,9 @@ module.exports = (options) => ({
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[local]___[hash:base64:5]'
+              importLoaders: 1
             }
           },
           'sass-loader',

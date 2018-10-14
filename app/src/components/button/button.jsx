@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './button.scss';
+import './button.scss';
 
 const Button = (props) => {
   Button.propTypes = {
@@ -10,7 +10,7 @@ const Button = (props) => {
   if (!label) {
     return null;
   }
-  return <button type="button" className={styles.button}>{label}</button>;
+  return <button type="button" className="button">{label}</button>;
 };
 
 export default Button;
