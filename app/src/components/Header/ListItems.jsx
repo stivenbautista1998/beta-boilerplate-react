@@ -1,27 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './style.scss';
 
-function ListItems({ items }) {
-  ListItems.prototype = {
+class ListItems extends Component {
+  static propTypes = {
     items: PropTypes.object
-  };
-  if(!items) {
-    return null;
   }
-  const result = items.list.map((item) => {
-    const is_selected = item.name === "home";
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSelected: ''
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    const currentSite = window.location.href;
+    if (currentSite.includes('/features')) {
+      this.setState({ isSelected: 'features' });
+    } else if (currentSite.includes('/support')) {
+      this.setState({ isSelected: 'support' });
+    } else if (currentSite.includes('/contats')) {
+      this.setState({ isSelected: 'contats' });
+    } else {
+      this.setState({ isSelected: 'home' });
+    }
+  }
+
+  handleClick(event) {
+    let value = event.target.innerText;
+    value = value.toLowerCase();
+    this.setState({ isSelected: value });
+  }
+
+  render() {
+    const { items } = this.props;
+    const { isSelected } = this.state;
+    const result = items.list.map((item) => {
+      const selected = item.name === isSelected;
+      return (
+        <li key={item.id} className="list__item">
+          <Link onClick={this.handleClick} className={selected ? 'list__link list__link--selected' : 'list__link'} to={item.link}>{item.name}</Link>
+        </li>
+      );
+    });
+
     return (
-      <li key={item.id} className="list__item">
-        <a className={is_selected ? 'list__link list__link--selected' : 'list__link'} href={item.link}>{item.name}</a>
-      </li>
+      <ul className="list">
+        {result}
+      </ul>
     );
-  });
-  return (
-    <ul className="list">
-      {result}
-    </ul>
-  );
+  }
 }
 
 export default ListItems;

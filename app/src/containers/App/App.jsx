@@ -1,47 +1,45 @@
-import React, { Component, Fragment } from 'react';
-import './style.scss';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
 
 // Load the favicon
 /* eslint-disable import/no-webpack-loader-syntax */
 import '!file-loader?name=[name].[ext]!../../../public/favicon.ico';
 /* eslint-enable import/no-webpack-loader-syntax */
 
-import Button from '../../components/button/button';
-import FancyButton from '../../components/fancy-button/fancy-button';
+import Features from '../Features';
+import Support from '../Support';
+import BoxContent from '../../components/BoxContent';
+import NotFoundPage from '../NotFoundPage/Loadable';
 import Header from '../../components/Header';
-// import video from '../../../public/media/video/peli.mp4';
+import Footer from '../../components/Footer';
+import './style.scss';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => (
+  <Fragment>
+    <Helmet
+      titleTemplate="React Boilerplate"
+      defaultTitle="ReactJS Boilerplate App"
+    >
+      <meta name="description" content="A Home of boilerplate react" />
+    </Helmet>
 
-    this.state = {
-      urlImg: ''
-      // isLoading: false,
-    };
-  }
-
-  componentDidMount() {
-    fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
-      .then((response) => response.blob())
-      .then((response) => {
-        const objectURL = URL.createObjectURL(response);
-        this.setState({ urlImg: objectURL });
-      }).catch((err) => {
-        const error = new Error(err.message);
-        throw error;
-      });
-  }
-
-  render() {
-    const { urlImg } = this.state;
-    return (
-      <Fragment>
+    <div className="app">
+      <div className="app-content">
         <Header />
-        <Button label="Boton Normal =)" />
-        <FancyButton label="Fancy Button =)" />
-        <img src={urlImg} alt="is button" />
-      </Fragment>
-    );
-  }
-}
+
+        <Switch>
+          <Route exact path="/" component={BoxContent} />
+          <Route path="/features" component={Features} />
+          <Route path="/support" component={Support} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </div>
+
+      <Footer />
+    </div>
+  </Fragment>
+);
+
+
+export default App;

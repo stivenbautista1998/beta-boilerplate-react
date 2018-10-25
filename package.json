@@ -11,7 +11,8 @@
     "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack.prod.config.js --color -p --progress",
     "start": "cross-env NODE_ENV=development node server",
     "test": "cross-env NODE_ENV=test jest --coverage",
-    "lint": "./node_modules/.bin/eslint app/src/**/*.js app/src/**/*.jsx"
+    "lint": "./node_modules/.bin/eslint app/src/**/*.js app/src/**/*.jsx",
+    "lint:fix": "./node_modules/.bin/eslint app/src/**/*.js app/src/**/*.jsx --fix"
   },
   "repository": {
     "type": "git",
@@ -91,7 +92,9 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0",
     "react-loadable": "^5.5.0",
+    "react-router-dom": "^4.3.1",
     "whatwg-fetch": "^2.0.4"
   }
 }

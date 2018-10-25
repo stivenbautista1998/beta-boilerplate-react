@@ -16,11 +16,10 @@ const envKeys = function() {
 module.exports = (options) => ({
   mode: options.mode,
   entry: options.entry,
-  output: {
+  output: Object.assign({
     path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/',
-    filename: 'js/bundle.js'
-  },
+  }, options.output),
   module: {
     rules: [
       {
