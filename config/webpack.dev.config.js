@@ -14,6 +14,11 @@ module.exports = require('./webpack.base.config')({
     'webpack-hot-middleware/client?noInfo=true&reload=true',
     path.join(process.cwd(), 'app/src/index.jsx')
   ],
+
+  output: {
+    filename: 'js/bundle.js'
+  },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './fancy-button.scss';
+import './fancy-button.scss';
 
 const FancyButton = (props) => {
   FancyButton.propTypes = {
@@ -10,7 +10,7 @@ const FancyButton = (props) => {
   if (!label) {
     return null;
   }
-  return <button type="button" className={styles.button}>{label}</button>;
+  return <button type="button" className="fancy-button">{label}</button>;
 };
 
 export default FancyButton;

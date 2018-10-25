@@ -16,11 +16,10 @@ const envKeys = function() {
 module.exports = (options) => ({
   mode: options.mode,
   entry: options.entry,
-  output: {
+  output: Object.assign({
     path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/',
-    filename: 'js/bundle.js'
-  },
+  }, options.output),
   module: {
     rules: [
       {
@@ -38,10 +37,9 @@ module.exports = (options) => ({
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[local]___[hash:base64:5]'
+              importLoaders: 1
             }
           },
           'sass-loader',

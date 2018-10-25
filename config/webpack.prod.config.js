@@ -11,6 +11,11 @@ module.exports = require('./webpack.base.config')({
   entry: [
     path.join(process.cwd(), 'app/src/index.jsx')
   ],
+
+  output: {
+    filename: 'js/bundle.[hash:7].js'
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/public/index.html',
