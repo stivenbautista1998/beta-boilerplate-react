@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import TitleSection from './TitleSection';
 import ContentList from './ContentList';
 import './style.scss';
@@ -182,6 +183,11 @@ class BoxContent extends Component {
     const { stockHeart, stockEye } = this.state;
     return (
       <section className="section-tech">
+        <Helmet>
+          <title>Box Content</title>
+          <meta name="description" content="A React Boilerplate application home" />
+        </Helmet>
+
         <div className="wrapper">
           <TitleSection title="Development stack" stockHeart={stockHeart} stockEye={stockEye} />
           <div className="grid">

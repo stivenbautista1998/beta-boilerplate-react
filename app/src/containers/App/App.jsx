@@ -2,14 +2,9 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-// Load the favicon
-/* eslint-disable import/no-webpack-loader-syntax */
-import '!file-loader?name=[name].[ext]!../../../public/favicon.ico';
-/* eslint-enable import/no-webpack-loader-syntax */
-
 import Features from '../Features';
 import Support from '../Support';
-import BoxContent from '../../components/BoxContent';
+import BoxContent from '../BoxContent/Loadable';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
