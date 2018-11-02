@@ -16,6 +16,7 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
+    "redux-saga",
     "react",
     "jsx-a11y"
   ],
@@ -54,6 +55,8 @@ module.exports = {
     "react/jsx-filename-extension": 0,
     "react/require-default-props": 0,
     "react/self-closing-comp": 0,
+    "redux-saga/no-yield-in-race": 2,
+    "redux-saga/yield-effects": 2,
     "jsx-a11y/anchor-is-valid": 0
   },
   "settings": {
