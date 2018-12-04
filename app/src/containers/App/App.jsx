@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Features from '../Features';
 import Support from '../Support';
 import BoxContent from '../BoxContent/Loadable';
+import Play from '../Play';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -27,6 +28,7 @@ const App = () => (
           <Route exact path="/" component={BoxContent} />
           <Route path="/features" component={Features} />
           <Route path="/support" component={Support} />
+          <Route path="/play" component={Play} />
           <Route path="" component={NotFoundPage} />
         </Switch>
       </div>
