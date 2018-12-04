@@ -10,7 +10,7 @@ const myList = {
     { id: 1, name: 'home', link: '/' },
     { id: 2, name: 'features', link: '/features' },
     { id: 3, name: 'support', link: '/support' },
-    { id: 4, name: 'contats', link: '/contats' }
+    { id: 4, name: 'play', link: '/play' }
   ]
 };
 

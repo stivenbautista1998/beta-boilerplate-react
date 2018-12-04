@@ -21,8 +21,8 @@ class ListItems extends Component {
       this.setState({ isSelected: 'features' });
     } else if (currentSite.includes('/support')) {
       this.setState({ isSelected: 'support' });
-    } else if (currentSite.includes('/contats')) {
-      this.setState({ isSelected: 'contats' });
+    } else if (currentSite.includes('/play')) {
+      this.setState({ isSelected: 'play' });
     } else {
       this.setState({ isSelected: 'home' });
     }

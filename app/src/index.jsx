@@ -45,6 +45,8 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');
 
+console.log(store.getState());
+
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
